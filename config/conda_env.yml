@@ -1,0 +1,37 @@
+name: britroc-fitting
+channels:
+  - conda-forge
+  - bioconda
+  - genomedk
+  - defaults
+dependencies:
+  - gxx_linux-64
+  - r-tidyverse
+  - r-rmarkdown
+  - r-devtools
+  - r-base
+  - r-compositions
+  - r-reshape2
+  - r-pheatmap
+  - r-gridextra
+  - r-mass
+  - r-tmb
+  - r-uuid
+  - bioconductor-complexheatmap
+  - r-ternary
+  - r-ggrepel
+  - r-zcompositions
+  - r-robcompositions
+  - r-fmsb
+  - r-optparse
+  - r-rstan
+  - r-bayesplot
+  - r-xtable
+  - r-transport
+  - r-qgraph
+  - bioconductor-yapsa
+# manually add r Compositional
+# manually add r Ternary
+# manually add r ggradar
+prefix: /Users/smith10/resources/miniconda3/envs/britroc-fitting
+

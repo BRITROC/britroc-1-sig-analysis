@@ -1,0 +1,40 @@
+------------------------------------------------------------
+------------------------------------------------------------
+
+LN_modelling_zeros_partialILR_TMB.R: mixed effects modelling of partial ILR. Full RE
+
+------
+
+Using all signatures
+> wald_TMB_wrapper(results_full0, verbatim = FALSE)            [,1][1,] 0.005210203 (*)
+
+------
+
+Removing signature 5
+> wald_TMB_wrapper(rep)           [,1][1,] 0.09354187
+
+------------
+
+LN_modelling_zeros_FE_partialILR_TMB.R: fixed effects modelling of partial ILR
+Full RE
+
+------
+
+Using all signatures
+> wald_TMB_wrapper(results_full0, verbatim = FALSE)             [,1][1,] 0.0002561988
+
+------
+
+Removing signature 5
+> wald_TMB_wrapper(rep)           [,1][1,] 0.01435566
+
+------------
+
+LN_modelling_zeros_FE_partialILR_TMB.R: fixed effects modelling of partial ILR
+Full RE. Using the ME code
+
+
+------------------------------------------------------------
+
+
+
