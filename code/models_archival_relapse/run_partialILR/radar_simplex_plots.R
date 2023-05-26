@@ -9,7 +9,7 @@ source("../helper/functions.R")
 source("../helper/header.R")
 source("../helper/helper_functions.R")
 source("../helper/helper_TMB.R")
-source("../../../../BriTROC/colour_palettes.R")
+source("../../../../britroc-1-cn-analysis/colour_palettes.R")
 library(fmsb) ## radar plots
 library(Ternary) ## ternary plots
 library(ggradar) ## Added by PS
@@ -29,7 +29,7 @@ res_nlminb_nocoroutsidesd_only_matched_allsigs = readRDS(paste0(folder_out_RDS, 
 path="../../../data/britroc_30kb_signature_data.rds"
 load(path)
 exposures=t(sig_quants)
-source("../../../../BriTROC/colour_palettes.R")
+source("../../../../britroc-1-cn-analysis/colour_palettes.R")
 #-------------------------------------------------------------------------------------------#
 ## radar/spider plot
 
@@ -142,17 +142,24 @@ arx_relapse_bar_beta <- ggplot() +
   scale_colour_manual(values = colour_palettes$diagnosis_relapse) +
   theme_bw() +
   theme(legend.position = "none")
+             
+# Export source data
+write.table(x = combined_radar,file = "../../../../britroc-1-cn-analysis/source_data/figure_5C_layer_1.tsv",
+            quote = F,sep = "\t",row.names = F,col.names = T)
 
-saveRDS(arx_relapse_radar_beta,file = "../../../../BriTROC/plots/arx_relapse_radar_partialILR_beta.RDS")
-ggsave(filename = "../../../../BriTROC/plots/arx_relapse_radar_partialILR_beta.png",
+write.table(x = beta_data,file = "../../../../britroc-1-cn-analysis/source_data/figure_5C_layer_2.tsv",
+            quote = F,sep = "\t",row.names = F,col.names = T)
+             
+saveRDS(arx_relapse_radar_beta,file = "../../../../britroc-1-cn-analysis/plots/arx_relapse_radar_partialILR_beta.RDS")
+ggsave(filename = "../../../../britroc-1-cn-analysis/plots/arx_relapse_radar_partialILR_beta.png",
        plot = arx_relapse_radar_beta,device = "png",width = 8,height = 8,units = "in",dpi = 300)
-ggsave(filename = "../../../../BriTROC/plots/arx_relapse_radar_partialILR_beta.pdf",
+ggsave(filename = "../../../../britroc-1-cn-analysis/plots/arx_relapse_radar_partialILR_beta.pdf",
        plot = arx_relapse_radar_beta,device = "pdf",width = 8,height = 8,units = "in",dpi = 300)
 
-saveRDS(arx_relapse_bar_beta,file = "../../../../BriTROC/plots/arx_relapse_bar_partialILR_beta.RDS")
-ggsave(filename = "../../../../BriTROC/plots/arx_relapse_bar_partialILR_beta.png",
+saveRDS(arx_relapse_bar_beta,file = "../../../../britroc-1-cn-analysis/plots/arx_relapse_bar_partialILR_beta.RDS")
+ggsave(filename = "../../../../britroc-1-cn-analysis/plots/arx_relapse_bar_partialILR_beta.png",
        plot = arx_relapse_bar_beta,device = "png",width = 10,height = 8,units = "in",dpi = 300)
-ggsave(filename = "../../../../BriTROC/plots/arx_relapse_bar_partialILR_beta.pdf",
+ggsave(filename = "../../../../britroc-1-cn-analysis/plots/arx_relapse_bar_partialILR_beta.pdf",
        plot = arx_relapse_bar_beta,device = "pdf",width = 10,height = 8,units = "in",dpi = 300)
 
 ## all combinations of differences
@@ -221,7 +228,7 @@ apply(combinations_k3, 2, function(combination_sigs){
   #pdf(paste0(folder_images_out, "ternary_all_combinations/ternary_all_",
              #paste0(combination_sigs, collapse = '+'), ".pdf"),
       #width = 3, height = 3)
-  pdf(paste0("../../../../BriTROC/copy_number_signatures/plots/ternary_all_combinations/ternary_all_",
+  pdf(paste0("../../../../britroc-1-cn-analysis/copy_number_signatures/plots/ternary_all_combinations/ternary_all_",
            paste0(combination_sigs, collapse = '+'), ".pdf"),
     width = 3, height = 3)
   par(mfrow=c(1,1))
