@@ -1,23 +1,25 @@
-## Compositional analyses for the paper "The copy-number landscape of recurrent ovarian high grade serous carcinoma"
+# britroc-1-sig-analysis
 
-### Main results
-The models fail to find a difference in the signature exposyres between archival (diagnosis, primary) samples.
-- There is no differential abundance in a fixed-effects model with correlations and removing s5, and only including one sample per patient and per group (there are several patients with multiple archival samples, or with multiple relapse samples).
-```r
-wald_TMB_wrapper(res_nlminb_FEcor_nos5_nonrepeated)
-          [,1]
-[1,] 0.0683059
+Compositional analyses for the paper "The copy number and mutational landscape of recurrent ovarian high-grade serous carcinoma" Smith & Bradley et al. 2023
+
+## Compositional CN signatures
+### setup
+
+#### Install the conda environment
+
+
+#### Activate the newly installed environment
 ```
-- There is no differential abundance in a mixed-effects model with correlations and removing s5, where we only include patients with at least one archival and one relapse sample. This is done so that the error term and the random intercept are not confounded.
-```r
-wald_TMB_wrapper(res_nlminb_outsidesd_only_matched)
-           [,1]
-[1,] 0.05207677
+conda activate britroc-fitting
 ```
 
-### Organisation of files
+### Run analysis
+```
+#./run_analysis_pipeline.sh
+```
 
-#### Main files
+## Organisation of files
+### Main files
 ```
 .
 ├── README.md
@@ -62,24 +64,9 @@ wald_TMB_wrapper(res_nlminb_outsidesd_only_matched)
         └── morrill_britroc_latex_content2.tex
 ```
 
-#### Models
+### Models
 The models are implemented using Template Model Builder (TMB) and are found in `code/models/tmb_RE/`. They are run from R (see the files under `code/models/`).
 
-<!-- ### Main figures
-
-#### Simplex plots
-![](https://github.com/lm687/BriTROC-1-paired_analysis/tree/master/results/exploratory/simplex_arx.pdf?raw=true)
-![](https://github.com/lm687/BriTROC-1-paired_analysis/tree/master/results/exploratory/simplex_rlps.pdf)
-
-#### Radar plots
-![](https://github.com/lm687/BriTROC-1-paired_analysis/tree/master/results/partialILRmodelling_ME/compile_radar.pdf)
-
-![](https://github.com/lm687/BriTROC-1-paired_analysis/tree/master/results/partialILRmodelling_ME/ternary_all.pdf)
-
-#### Differential presence of signatures using a Bernoulli model:
-![](https://github.com/lm687/BriTROC-1-paired_analysis/tree/master/results/zeros_modelling/correlated_binomial_0_fitted_zeros.pdf)
-
-#### Differential presence+abundance
-![](https://github.com/lm687/BriTROC-1-paired_analysis/tree/master/results/zeros_modelling/britroc_summary_both_sets_coefs_nocor.pdf)
- -->
-<img src="results/partialILRmodelling_ME/res_nlminb_outsidesd_only_matched_covariance.png" width="200" height="200" />
+### Author(s)
+- [@lm687](https://github.com/lm687)
+- [@phil9s](https://github.com/Phil9S)
