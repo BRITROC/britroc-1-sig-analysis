@@ -9,8 +9,13 @@ Clone this git repository and `cd` into the directory
 git clone https://github.com/BRITROC/britroc-1-sig-analysis.git
 cd britroc-1-sig-analysis
 ```
-#### Install the conda environment
 
+#### Install the conda environment
+Provided conda is installed and available on the `$PATH` run the following line. This will downloaded the pre-processed data from [zenodo](https://zenodo.org/record/7573784#.ZC60rnbMJhE), install the required conda environment, and install packages which are not available via conda channels.
+```
+./install_env.sh {CONDA_INSTALL}
+```
+Where `{CONDA_INSTALL}` is the path to your conda directory, such as `/home/username/resources/miniconda/`.
 
 #### Activate the newly installed environment
 ```
