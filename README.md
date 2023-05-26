@@ -1,10 +1,14 @@
 # britroc-1-sig-analysis
 
-Compositional analyses for the paper "The copy number and mutational landscape of recurrent ovarian high-grade serous carcinoma" Smith & Bradley et al. 2023
+Compositional analyses for the data presented in the publication [The copy number and mutational landscape of recurrent ovarian high-grade serous carcinoma](https://www.medrxiv.org/content/10.1101/2022.10.21.22280992v1) (Smith & Bradley _et al._ 2023 - Accepted _Nature Communications_).
 
 ## Compositional CN signatures
 ### setup
-
+Clone this git repository and `cd` into the directory
+```
+git clone https://github.com/BRITROC/britroc-1-sig-analysis.git
+cd britroc-1-sig-analysis
+```
 #### Install the conda environment
 
 
