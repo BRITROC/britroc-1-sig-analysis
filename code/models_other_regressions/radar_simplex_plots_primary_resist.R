@@ -23,7 +23,7 @@ ME_primaryplatinumsensitivity_partialILRnocor_partialILRnocor = readRDS(
 path="../../data/britroc_30kb_signature_data.rds"
 load(path)
 exposures=t(sig_quants)
-source("../../../britroc-cn-analysis/colour_palettes.R")
+source("../../../britroc-1-cn-analysis/colour_palettes.R")
 #-------------------------------------------------------------------------------------------#
 ## radar/spider plot
 
@@ -116,15 +116,22 @@ primary_resist_bar_beta <- ggplot() +
   theme(legend.position = "bottom")
 primary_resist_bar_beta
 
-saveRDS(primary_resist_radar_beta,file = "../../../britroc-cn-analysis/plots/primary_resist_radar_partialILR_beta.RDS")
-ggsave(filename = "../../../britroc-cn-analysis/plots/primary_resist_radar_partialILR_beta.png",
+# export source data
+write.table(x = combined_radar,file = "../../../britroc-1-cn-analysis/source_data/figure_5C_layer_1.tsv",
+            quote = F,sep = "\t",row.names = F,col.names = T)
+
+write.table(x = beta_data,file = "../../../britroc-1-cn-analysis/source_data/figure_5C_layer_2.tsv",
+            quote = F,sep = "\t",row.names = F,col.names = T)
+    
+saveRDS(primary_resist_radar_beta,file = "../../../britroc-1-cn-analysis/plots/primary_resist_radar_partialILR_beta.RDS")
+ggsave(filename = "../../../britroc-1-cn-analysis/plots/primary_resist_radar_partialILR_beta.png",
        plot = primary_resist_radar_beta,device = "png",width = 8,height = 8,units = "in",dpi = 300)
-ggsave(filename = "../../../britroc-cn-analysis/plots/primary_resist_radar_partialILR_beta.pdf",
+ggsave(filename = "../../../britroc-1-cn-analysis/plots/primary_resist_radar_partialILR_beta.pdf",
        plot = primary_resist_radar_beta,device = "pdf",width = 8,height = 8,units = "in",dpi = 300)
 
-saveRDS(primary_resist_bar_beta,file = "../../../britroc-cn-analysis/plots/primary_resist_bar_partialILR_beta.RDS")
-ggsave(filename = "../../../britroc-cn-analysis/plots/primary_resist_bar_partialILR_beta.png",
+saveRDS(primary_resist_bar_beta,file = "../../../britroc-1-cn-analysis/plots/primary_resist_bar_partialILR_beta.RDS")
+ggsave(filename = "../../../britroc-1-cn-analysis/plots/primary_resist_bar_partialILR_beta.png",
        plot = primary_resist_bar_beta,device = "png",width = 10,height = 8,units = "in",dpi = 300)
-ggsave(filename = "../../../britroc-cn-analysis/plots/primary_resist_bar_partialILR_beta.pdf",
+ggsave(filename = "../../../britroc-1-cn-analysis/plots/primary_resist_bar_partialILR_beta.pdf",
        plot = primary_resist_bar_beta,device = "pdf",width = 10,height = 8,units = "in",dpi = 300)
 #-------------------------------------------------------------------------------------------#
