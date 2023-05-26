@@ -25,7 +25,7 @@ ME_brcastatus_partialILRnocor_partialILRnocor = readRDS(
 path="../../data/britroc_30kb_signature_data.rds"
 load(path)
 exposures=t(sig_quants)
-source("../../../britroc-cn-analysis/colour_palettes.R")
+source("../../../britroc-1-cn-analysis/colour_palettes.R")
 
 
 #-------------------------------------------------------------------------------------------#
@@ -44,12 +44,12 @@ patient.meta$brca_status <- factor(ifelse(patient.meta$PATIENT_ID %in% brca_stat
 brca_data <- as.data.frame(rbind(exposures[patient.meta$brca_status == 'brca',]), ncol=7) %>%
               tibble::rownames_to_column(var = "id") %>%
               tidyr::pivot_longer(cols = 2:8,names_to = "signature") %>%
-              mutate(group = rep("BRCA",nrow(.)))
+              mutate(group = rep("BRCA-mutant",nrow(.)))
 
 nonbrca_data <- as.data.frame(rbind(exposures[patient.meta$brca_status == 'non-brca',]), ncol=7) %>%
   tibble::rownames_to_column(var = "id") %>%
   tidyr::pivot_longer(cols = 2:8,names_to = "signature") %>%
-  mutate(group = rep("non-BRCA",nrow(.)))
+  mutate(group = rep("wildtype",nrow(.)))
 
 arx_beta=as.numeric(compositions::ilrInv(archival_fit))
 names(arx_beta) <- paste0("s",1:7)
@@ -57,13 +57,13 @@ names(arx_beta) <- paste0("s",1:7)
 rlps_beta <- as.numeric(compositions::ilrInv(slope_fit+archival_fit))
 names(rlps_beta) <- paste0("s",1:7)
 
-beta_data <- as.data.frame(rbind(arx_beta,rlps_beta),row.names = c("BRCA","non-BRCA")) %>%
+beta_data <- as.data.frame(rbind(arx_beta,rlps_beta),row.names = c("BRCA-mutant","wildtype")) %>%
               tibble::rownames_to_column(var = "group") %>%
               tidyr::pivot_longer(cols = 2:8,names_to = "signature")
-beta_data$group <- factor(beta_data$group,levels = c("BRCA","non-BRCA"))
+beta_data$group <- factor(beta_data$group,levels = c("BRCA-mutant","wildtype"))
 
 combined_radar <- rbind(brca_data,nonbrca_data)
-combined_radar$group <- factor(combined_radar$group,levels = c("BRCA","non-BRCA"))
+combined_radar$group <- factor(combined_radar$group,levels = c("BRCA-mutant","wildtype"))
 
 ## coord_radar function from
 ## https://stackoverflow.com/questions/62462681/ggradar-highlight-top-values-in-radar
@@ -119,16 +119,23 @@ brca_bar_beta <- ggplot() +
   theme_bw() +
   theme(legend.position = "bottom")
 brca_bar_beta
+    
+# export source data
+write.table(x = combined_radar,file = "../../../britroc-1-cn-analysis/source_data/figure_5C_layer_1.tsv",
+            quote = F,sep = "\t",row.names = F,col.names = T)
 
-saveRDS(brca_radar_beta,file = "../../../britroc-cn-analysis/plots/brca_status_radar_partialILR_beta.RDS")
-ggsave(filename = "../../../britroc-cn-analysis/plots/brca_status_radar_partialILR_beta.png",
+write.table(x = beta_data,file = "../../../britroc-1-cn-analysis/source_data/figure_5C_layer_2.tsv",
+            quote = F,sep = "\t",row.names = F,col.names = T)
+    
+saveRDS(brca_radar_beta,file = "../../../britroc-1-cn-analysis/plots/brca_status_radar_partialILR_beta.RDS")
+ggsave(filename = "../../../britroc-1-cn-analysis/plots/brca_status_radar_partialILR_beta.png",
        plot = brca_radar_beta,device = "png",width = 8,height = 8,units = "in",dpi = 300)
-ggsave(filename = "../../../britroc-cn-analysis/plots/brca_status_radar_partialILR_beta.pdf",
+ggsave(filename = "../../../britroc-1-cn-analysis/plots/brca_status_radar_partialILR_beta.pdf",
        plot = brca_radar_beta,device = "pdf",width = 8,height = 8,units = "in",dpi = 300)
 
-saveRDS(brca_bar_beta,file = "../../../britroc-cn-analysis/plots/brca_status_bar_partialILR_beta.RDS")
-ggsave(filename = "../../../britroc-cn-analysis/plots/brca_status_bar_partialILR_beta.png",
+saveRDS(brca_bar_beta,file = "../../../britroc-1-cn-analysis/plots/brca_status_bar_partialILR_beta.RDS")
+ggsave(filename = "../../../britroc-1-cn-analysis/plots/brca_status_bar_partialILR_beta.png",
        plot = brca_bar_beta,device = "png",width = 10,height = 8,units = "in",dpi = 300)
-ggsave(filename = "../../../britroc-cn-analysis/plots/brca_status_bar_partialILR_beta.pdf",
+ggsave(filename = "../../../britroc-1-cn-analysis/plots/brca_status_bar_partialILR_beta.pdf",
        plot = brca_bar_beta,device = "pdf",width = 10,height = 8,units = "in",dpi = 300)
 #-------------------------------------------------------------------------------------------#
