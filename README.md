@@ -1,6 +1,6 @@
 # britroc-1-sig-analysis
 
-Compositional analyses for the data presented in the publication [The copy number and mutational landscape of recurrent ovarian high-grade serous carcinoma](https://www.medrxiv.org/content/10.1101/2022.10.21.22280992v1) (Smith & Bradley _et al._ 2023 - Accepted _Nature Communications_).
+Compositional analyses for the data presented in the publication [The copy number and mutational landscape of recurrent ovarian high-grade serous carcinoma](https://doi.org/10.1038/s41467-023-39867-7) (Smith & Bradley _et al._ 2023 - Accepted _Nature Communications_).
 
 ## Compositional CN signatures
 ### setup
@@ -11,7 +11,7 @@ cd britroc-1-sig-analysis
 ```
 
 #### Install the conda environment
-Provided conda is installed and available on the `$PATH` run the following line. This will downloaded the pre-processed data from [zenodo](https://zenodo.org/record/7573784#.ZC60rnbMJhE), install the required conda environment, and install packages which are not available via conda channels.
+Provided conda is installed and available on the `$PATH` run the following line. This will downloaded the pre-processed data from [zenodo](10.5281/zenodo.7573783), install the required conda environment, and install packages which are not available via conda channels.
 ```
 ./install_env.sh {CONDA_INSTALL}
 ```
