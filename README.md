@@ -11,7 +11,7 @@ cd britroc-1-sig-analysis
 ```
 
 #### Install the conda environment
-Provided conda is installed and available on the `$PATH` run the following line. This will downloaded the pre-processed data from [zenodo](10.5281/zenodo.7573783), install the required conda environment, and install packages which are not available via conda channels.
+Provided conda is installed and available on the `$PATH` run the following line. This will downloaded the pre-processed data from [zenodo](https://zenodo.org/record/8304868), install the required conda environment, and install packages which are not available via conda channels.
 ```
 ./install_env.sh {CONDA_INSTALL}
 ```
