@@ -1,6 +1,6 @@
 # britroc-1-sig-analysis
 
-Compositional analyses for the data presented in the publication [The copy number and mutational landscape of recurrent ovarian high-grade serous carcinoma](https://doi.org/10.1038/s41467-023-39867-7) (Smith & Bradley _et al._ 2023 - Accepted _Nature Communications_).
+Compositional analyses for the data presented in the publication [The copy number and mutational landscape of recurrent ovarian high-grade serous carcinoma](https://doi.org/10.1038/s41467-023-39867-7) (Smith & Bradley _et al._ 2023 - _Nature Communications_).
 
 ## Compositional CN signatures
 ### setup
